@@ -111,3 +111,26 @@ docker run -d \
 - `.env` 不要 `COPY` 到镜像里，运行时通过 `--env-file` 传入
 - `db/` 建议挂载到宿主机，避免容器删除后丢失会话数据
 - 如果拉取或构建依赖慢，`Dockerfile` 已配置国内 PyPI 镜像源
+
+
+
+- 更换.env中的API后，需要执行以下Docker操作来重启容器并加载新配置：
+
+  # 1. 停止并删除旧容器
+  docker stop food-recipe-recommender
+  docker rm food-recipe-recommender
+
+  # 2. 重新启动容器（使用更新后的.env文件）
+  docker run -d \
+    --name food-recipe-recommender \
+    --restart unless-stopped \
+    -p 8001:8001 \
+    --env-file /opt/food-recipe/.env \
+    -v /opt/food-recipe/db:/app/db \
+    crpi-z2yvaep8ppb79obm.cn-hangzhou.personal.cr.aliyuncs.com/docker_fast_test/docker-a:1.0.0
+
+  注意：docker restart 不会重新加载 .env 文件。如果修改了环境变量，必须先 stop + rm 再重新
+  run，这样才能让新的环境变量生效。
+
+
+
