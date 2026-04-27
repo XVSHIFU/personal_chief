@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Memphis 全局样式 */
+:root {
+  --memphis-red: #ff6b6b;
+  --memphis-yellow: #feca57;
+  --memphis-cyan: #48dbfb;
+  --memphis-pink: #ff9ff3;
+  --memphis-green: #1dd1a1;
+  --memphis-purple: #5f27cd;
+}
+
+@keyframes memphis-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes memphis-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900;
+    background-color: var(--memphis-yellow);
+    background-image:
+      radial-gradient(#000 1.5px, transparent 1.5px),
+      linear-gradient(135deg, rgba(255, 107, 107, 0.12), rgba(72, 219, 251, 0.12));
+    background-size: 18px 18px, cover;
+  }
+}
+
+@layer components {
+  .memphis-shadow {
+    box-shadow: 6px 6px 0 #000;
+  }
+
+  .memphis-waves {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q25 0 50 10 T100 10' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+  }
+
+  .memphis-dots {
+    background-image: radial-gradient(#000 2px, transparent 2px);
+    background-size: 20px 20px;
+  }
+
+  .memphis-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      #000 10px,
+      #000 12px
+    );
+  }
+
+  .memphis-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .memphis-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), transparent);
+    pointer-events: none;
+  }
+
+  .memphis-card:hover::before {
+    opacity: 1;
+  }
+
+  .memphis-animate-in {
+    animation: memphis-fade-in 0.5s ease-out both;
+  }
+
+  .memphis-button {
+    border: 4px solid #000;
+    box-shadow: 5px 5px 0 #000;
+  }
+
+  .memphis-button:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 7px 7px 0 #000;
+  }
+
+  .memphis-button:active {
+    transform: translate(1px, 1px);
+    box-shadow: 3px 3px 0 #000;
+  }
+
+  .memphis-chip {
+    position: relative;
+  }
+
+  .memphis-chip::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #000;
+    opacity: 0.18;
+  }
+
+  .message-bubble-user {
+    @apply text-black border-4 border-black;
+    background: linear-gradient(135deg, var(--memphis-red), var(--memphis-yellow));
+    box-shadow: 5px 5px 0 #000;
+  }
+
+  .message-bubble-assistant {
+    @apply border-4 border-black;
+    background: linear-gradient(135deg, #fff, #fdf2ff);
+    box-shadow: 5px 5px 0 #000;
+  }
+
+  .sidebar-item-active {
+    @apply border-4 border-black;
+    background: linear-gradient(135deg, rgba(72, 219, 251, 0.35), rgba(255, 159, 243, 0.35));
+    box-shadow: 4px 4px 0 #000;
+  }
+
+  .input-area {
+    @apply rounded-2xl border-4 border-black;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 159, 243, 0.12));
+    box-shadow: 6px 6px 0 #000;
+  }
+
+  .glass-effect {
+    @apply border-4 border-black;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(254, 202, 87, 0.22));
+    box-shadow: 6px 6px 0 #000;
+  }
+}
