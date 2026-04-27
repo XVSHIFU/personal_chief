@@ -261,49 +261,12 @@ GPT是OpenAI公司研发的一个基于Transformer架构的大语言模型。
 
 # 模型部署
 
-## 通用 API 测试方法
-
-```bash
-curl -X POST <BASE_URL>/chat/completions
--H "Authorization: Bearer <API_KEY>"
--H "Content-Type: application/json"
--d '{
-"model": "<MODEL>",
-"messages": [
-{"role": "system", "content": "You are a helpful assistant."},
-{"role": "user", "content": "Hello!"}
-],
-"stream": false
-}'
-```
-
-
-
-```bash
-curl -X POST https://free.9e.nz/chat/completions
--H "Authorization: Bearer sk-cdf103d89a0628439c8889b546519d6bf0baedb700865e27e878a946e90760e9"
--H "Content-Type: application/json"
--d '{
-"model": "opus4.6",
-"messages": [
-{"role": "system", "content": "You are a helpful assistant."},
-{"role": "user", "content": "Hello!"}
-],
-"stream": false
-}'
-```
-
-
-
-
-
-
 
 ## Deepseek
 
 ### API key:
 
-test: `sk-31bbc60d5513437c9f99c2dfbbc1f883`
+test: `sk-3xxxxxxxxx3`
 
 
 
